@@ -1,0 +1,47 @@
+
+<html>
+<head>
+	<title>Dissecting</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+<h2>
+	<br> 
+	<center> Paper Review - <a href= "https://ipfs.io/ipfs/QmUy4jh5mGNZvLkjies1RWM4YuvJh5o2FYopNPVYwrRVGV"> Dissecting the Performance of Strongly-Consistent Replication Protocols </a></center>
+</h2>
+
+<p class="small">
+
+	Consensus protocols perform differently due to different network, workload, and deploy- ment conditions. This paper devoted to make a comparison in LANs and WANs between single-leader, multi-leader, hierarchical multi-leader, and leaderless (opportunistic leader) consensus protocols. 
+</p>
+
+<p class="small">
+
+	To model consensus performance, the paper estimates the average latency.<br>
+		<b>latency</b> = w<sub>Q</sub> + &mu; + D<sub>L</sub>  + D<sub>Q</sub>  <br>
+		latency &#x2192; total time that takes client to reach consensus <br> 
+		w<sub>Q</sub> &#x2192; round's queue waiting time <br>
+		&mu; &#x2192; How long it takes the leader to process all messages for a given round<br>
+		D<sub>L</sub> &#x2192; network delays between client and leader <br>
+		D<sub>Q</sub> &#x2192; network delays between leader and follower in a quorum<br>
+
+</p>
+
+<p class="small">
+
+	The maximum throughput is reciprocal of service time. R<sub>max</sub> = 1/&mu;.
+	Figure 4 shows comparison between all four queues and Paxi implmentation. The result almost the same, the paper used M/D/1 model for the rest of analysis.
+
+</p>
+
+<p class="small">
+
+	
+
+
+</p>
+
+</body>
+</html>

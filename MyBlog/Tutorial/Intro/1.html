@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+
+<title>Blog</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h2,h3,h4,h5,ol,li {font-family: "Arial", sans-serif}
+.container {
+  display: flex;
+  justify-content: center;
+}
+.center {
+  width: 800px;
+}
+img {
+   height: auto;
+   width:60%;
+}
+</style>
+
+<body stylstclass="w3-light-grey">
+<!-- w3-content defines a container for fixed size centered content, 
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1400px;">
+
+<!-- Header -->
+<header class="w3-container w3-center w3-padding-32"> 
+  <center> <h1><b>Introduction to Distributed Consensus</b></h1> </center> 
+</header>
+
+<!-- Grid -->
+<div class="w3-row">
+
+<!-- Blog entries -->
+<div class="container" class="w3-col l8 s12">
+  <!-- Blog entry -->
+  <div class="w3-card-4 w3-margin w3-white" >
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+  In today's world, the computer system is distributed. Many companies are operating on a global scale. There are many different reasons for the necessity fo distributed computing like remote geography, parallelism, reliability, and availability. Distributed computing has many benefits such as increasing storage capacity, etc. However, coordination between many machines is a hard problem and in distributed systems, the coordination problem has many names such as consistency, agreement, consensus, blockchain, and ledger.  
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	Here in this article, I would like to explain what is called distributed consensus algorithms. Also, I will include the blockchain consensus algorithms. Blockchain is a fascinating and novel distributed system. Blockchain and distributed systems cover a lot of the same ground just motivated in different ways. By coming to these worlds, I hope blockchain people can gain an appreciation for the decade of research that has come before them and distributed systems people can see the way is that a lot of their ideas have played out in the wild.  
+
+
+</p></div>
+
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	The consensus algorithm is the solution to this problem. Consensus algorithm has three bullets. 1- Termination every node must decide on a value. 2- Agreement the value must be the same for every node. 3- Validity that value must be produced by same process. 
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	The naive solution for consensu is based on a single node propsed value to all nodes in the systems. If there are many nodes in the system, and they want to agree on a single value, the naive solution is in the figure below. The problems are one node wants to suggest different value. Network partition. A lot of nodes. Broadly speaking. 
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="NS.png"></center>
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	I will start with first consensus protocol called Paxos. Paxos is a family of distributed consensus algorithms used to reach consensus. Paxos as a basic has many challenges because many of its behavior is unspecified. Paxos has many variants that make it compelete and maybe complex at the same time. The basic varient is intuative. Paxos is based on ballot number that nodes can vote on. Each round of consensus requires two round of voting
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	Proposer propose value this plays as a warning that a new change is coming to the systems.
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="prepare.png"></center>
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	When the node received the prepared they check it against the largest valid number they previosly preposed. So, in this case, they can see n' is greater than n then they acknowledge. 
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="akb.png"></center>
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	Proposed node  must received majority for its proposed value. The proposer sends message accpet message to all nodes. It is like a command to accept value not valid ID but value. 
+	
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="sendb.png"></center>
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="count.png"></center>
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	Once the node received accept command, it will update its value to be x. Unless its received a new ballot with higher ballot number. In which case it will stop and wait that new ballot.
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="accept.png"></center>
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	What if node goes offline?
+	 	
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="failed.png"></center>
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	Proposers send prepare but other nodes go offline before it can respond. all other nodes will send their ack back to the proposer. When proposer count acks, then it sees that it received from the quourm of node. 
+	 	
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="saf.png"></center>
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	What if 2 nodes propose values at the same time?
+	 	
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="twoproposewithsimpleid.png"></center>
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	Two nodes, solid and dash send their proposal. This when ballet number came in play. Ballot number in paxos has a propoerty totally order. 
+	 	
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+B will win nodes will send ack to b. Majority received accept command sent. 	 	
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="sendb.png"></center>
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="sendtwopropose.png"></center>
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="ackforlater.png"></center>
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="majorityforidcom.png"></center>
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="acceptcompl.png"></center>
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	Raft..
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	The main point about Raft to simplyify the paxos. Raft tackle consensus problem by introdue the concpet of a leader. Leader is responsible of updating the state of the systems. it is the only node that able to pick the value the syystem maybe adopt. 
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="Raft.png"></center>
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	If different node received instruction to setup value, it forward instruction to leader.
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="notaldeader.png"></center>
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	Raft has an algorithm for leader election. The algorithm is fair among all nodes and ensures only one leader at a time. The node can be in one of three stages: followers, candadacy and leader. When node join the network, it expect to receive a heardbeat from network leader. if node did not receive a heartbeat, it assumes that the leader is dead. Then it announces its own candidacy for leadership. and transit to candidate mode. 
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="dead.png"></center>
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	Then it sends a request to all nodes asking for their votes. If received majority it becomes a new leader.
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="leader.png"></center>
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	Raft also has replicated log. Log is long list of entries and each entry has value of log along with term number and index. 
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="log.png"></center>
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	Raft has the log-matching property. It says that if two entries in different logs have the same index and term, then they store the same command. If two entries in different logs have the same index and term, then the logs are indentical in all preceding entries. 
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+	When the leader wants the followers to append a new entry, it will send index and term number of the last entry that it is commmitted. Then the followers will check their log for matching entry  and if they do not have it, they reviused to add this entry. 
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="pro.png"></center>
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+	I will start talking about failure senario. A is the leader and index is 1. 
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="11.png"></center>
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+	Leader will send two messages. One has command x and other has y. Notice, node E did not received them. 
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="2.png"></center>
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+	The current network looks like the figure below.  
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="3.png"></center>
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+	The leader or A crashed and B managed to be the leader.
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="4.png"></center>
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+	Node B tries to send a message to all nodes and E rejected the message because the highest index which is 3 is missing from E's log. This rejection force B to resend index 2 and 3 to E in order to catch up.  
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="4.png"></center>
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+	So far, I assume every node is following the rules. What everybody do something arbitrary like proposer in paxos did not send acceptance message for a proposed that has never prepared and voter in Raft never vote twice on the same term. These arbitrary behavior is byzantine failure.    
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	How can a system tolerate byzantine failures?
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	Like building Paxos and Raft, there is another one called PBFT. It has to go through multiple voting process and it definelty more complex. PBFT can solve consensus problem and byzantine fault. PBFT works with 1/3 of nodes misbehaving. 
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="pbft.png"></center>
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	Sybil attach is not in PBFT because it force the node to negotiate their membership upfront. Means new node cannot join the network. This is not good for blockchain. 
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	How does Bitcoin handle consensus?
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	Bitcoin uses Nakamoto consensus that relies on POW. In Nakamoto consensus, every validator node composed a new candidate block from all pending transactions. The node then attempt to get a nounce  that combined with block content can be hashed to produce value that smaller than throushold.  
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	In Bitcoin, every miner already made some guesses. After something, the miner found nonce that produced small hash. 
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="bit.png"></center>
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	At this time, it can broadcast the block, nonce and hash for every other nodes in the system. The whole system can advance to the next block. One notice that its fair process because who find the hash, can win the proposal, or based on the propotion of hash power. 
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="rr.png"></center>
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	None proposal node, will check the validity of the block and verifiy it easly. 
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="rr1.png"></center>
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	Two nodes proposed two different blocks at the same time, red and purple blocks. 
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="two.png"></center>
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	Some choose to buid on a red block and some on purple block. 
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="fork.png"></center>
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	This called an accedental fork. If they continue for forever, then it will vaiolate the agreement. In Bitcoin, it incentived to avoid this problem by using the longest chain. Another problem called ASICs - application specific integrated circuits, spcial hardware can make it less fair. boils the ocean (consumes more energy).  
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	The solution for above problem is proof of stake. POS is a family of algorithms. Some of them like a POW where the probabiities ties with amount of steak. Either amount hold or security deposit.  
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	How can we know if the proposed node misbehaved?  
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	Use vote such as Tendermint. PBFT is vulenerable to sybil attacks. Tendermint is not valunrable to this attack by using POS. Node must put some collateral before it become proposal which increase the cost of enterying the newotk. If behave malciously, it collateral is slashed. POS problem tie consensu power directly to resources. Thoes who have most capital have the most control of consensus. What should we do to decouple resource from consensus? 
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="fork1.png"></center>
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	Federated Cosnensus. The best example is Stellar consensus protocol. It does not use POW or POS but it lets other nodes to choose what nodes to trust. Every node choose its quorum.
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="q.png"></center>
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	The example below is that A is trusted and B also trusted by other nodes. A translates to other nodes. Then the value is adapted it. When other nodes see B adopted it , then it adopted too.  
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="qq.png"></center>
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<center><img src ="qqq.png"></center>
+
+</p></div>
+</div><hr>
+<!-- END BLOG ENTRIES -->
+</div>
+<!-- END GRID -->
+</div><br>
+<!-- END w3-content -->
+</div>
+<!-- Footer -->
+<footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
+
+  <center>
+    <a href="http://www.salemmoh.com/MyBlog/Blog.html" class="w3-button w3-padding-large w3-white w3-border" class="w3-button w3-black w3-padding-large w3-margin-bottom">Main Blog</a>
+    </button>
+  </center>
+
+</footer>
+
+</body>
+</html>

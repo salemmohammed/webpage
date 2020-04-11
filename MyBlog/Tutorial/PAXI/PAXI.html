@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<title>PAXI</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h2,h3,h4,h5,ol,li {font-family: "Arial", sans-serif}
+.container {
+  display: flex;
+  justify-content: center;
+}
+.center {
+  width: 800px;
+}
+img {
+   height: auto;
+   width:40%;
+}
+</style>
+
+<body stylstclass="w3-light-grey">
+<!-- w3-content defines a container for fixed size centered content, 
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1400px;">
+
+<!-- Header -->
+<header class="w3-container w3-center w3-padding-32"> 
+<center> <h3><b> Open-source - <a href= "https://github.com/ailidani/PAXI"> PAXI Framework </a> </b></h3></center>
+</header>
+
+<!-- Grid -->
+<div class="w3-row">
+
+<!-- Blog entries -->
+<div class="container" class="w3-col l8 s12">
+  <!-- Blog entry -->
+  <div class="w3-card-4 w3-margin w3-white" >
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+  All our experiments for blockchain consensus protocols are conducted on a general framework called PAXI. PAXI framework is an open-source project mainly developed in a distributed system lab at SUNY-BUFFALO. PAXI framework is a coordination framework for prototyping and evaluation of consensus and replication protocols. PAXI has a fixed set of replicas N hardcoded in the configuration file before the framework launched. PAXI's network communication type is point-to-point and provides most of the elements that any replication protocol needs including network communication, state machine of a key-value store, client API and multiple types of quorum systems.
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+  PAXI allows consensus protocols to be fairly evaluated in a common environment. PAXI has falexible system envirnoment for better evaluation such as varying workloads, and deployment size. PAXI framework is a module based with many built-in variety of consensus protocols. The framework allows us to compare many consensus protocols such as PBFT, Tendermint and other Paxos protocols written in GoLang in the same environment under identical workloads.
+  <br> 
+  The framework provides extended abstractions to be shared between all Paxos variants, including location-aware configuration, network communication, client library with RESTful API, and a quorum management module. 
+  <br>
+  PAXI’s networking layer encapsulates a message passing model and exposes basic interfaces for a variety of message exchange patterns, and transparently supports TCP, UDP and simulated connection with Go channels. Additionally, our PAXI framework incorporates mechanisms to facilitate the startup of the system by sharing the initial parameters through the configuration management tool.
+  <br>
+  PAXI has key-value store abstraction. PAXI can be deployed on AWS EC2 nodes. PAXI has microbenchmark.
+
+</p></div>
+
+</p></div>
+
+</p></div>
+
+</div> <hr>
+
+<!-- END BLOG ENTRIES -->
+</div>
+
+<!-- END GRID -->
+</div><br>
+
+<!-- END w3-content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
+  <center><a href="http://www.salemmoh.com/MyBlog/Blog.html" class="w3-button w3-padding-large w3-white w3-border" class="w3-button w3-black w3-padding-large w3-margin-bottom">Main Blog</a></button></center>
+</footer>
+
+</body>
+</html>
