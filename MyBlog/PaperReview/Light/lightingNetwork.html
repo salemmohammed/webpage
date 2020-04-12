@@ -1,0 +1,74 @@
+A state channel is a two-way communication channel between participants which enable them to conduct interactions, which would normally occur on the blockchain, off the blockchain. What this will do is that it will decrease transaction time exponentially since you are no longer dependent on a third party like a miner to valid your transaction.
+
+
+
+So what are the requirements to do an off-chain state channel?
+
+A segment of the blockchain state is locked via multi-signature or some sort of smart contract, which is agreed upon by a set of participants.
+The participants interact with each other by signing transactions among each other without submitting anything to the miners.
+The entire transaction set is then added to the blockchain.
+
+
+
+The state channels can be closed at a point which is predetermined by the participants according to Slock.it founder Stephan Thual. It could either be:
+
+Time lapsed eg. the participants can agree to open a state channel and close it after 2 hours.
+It could be based on the total amount of transactions done eg. close the chain after $100 worth of transactions have taken place.
+
+A payment channel is basically a state channel which deals exclusively with payments and micropayments between parties. Remember, all the interactions on the channels are things that could happen on the blockchain but are happening off it. There are several kinds of payment channel designs, let’s go through some of the more popular ones.
+
+One of the earliest examples of the payment channel was suggested by Satoshi Nakamoto himself.
+
+This system uses some interesting features:
+
+Transaction Replacement.
+Input sequence numbers (nSequence).
+nLocktime.
+
+
+
+So, how does Raiden work?
+
+
+Suppose Alice and Bob want to interact with each other using Raiden. This is how they will go about it
+
+Alice and Bob open a payment channel between them which will be off chain and they deploy a smart contract.
+Both parties make a security deposit in the smart contract.
+Suppose Alice wants to send 3 tokens to Bob, she signs the message “3” and sends it to Bob. Bob now has proof of Alice sending him 3 tokens.
+Now, suppose Alice wants to send Bob 4 more tokens. She will update the state of the message to “7”. This shows that the message is conveying the previous and the latest transaction as well.
+The moment Bob wants to redeem the 7 tokens, he will go the blockchain and close the channel. He will get the 7 tokens from the deposit that was initially made in the channel.
+The information will be relayed to the blockchain and the only record that will be stored is the final 7 token deposit made to Bob.
+
+
+
+
+
+What are some features of the Raiden Network?
+Usable and simple application programming interface (API).
+Enables Ethereum scalability.
+Can be operated by an ERC20 token.
+Enables fast and simple transfer of money.
+Will decrease the load on the Ethereum blockchain.
+
+
+What Are State Channels?
+State channels refer to the process in which users transact with one another directly outside of the blockchain, or ‘off-chain,’ and greatly minimize their use of ‘on-chain’ operations. It’s one of the most exciting Ethereum scaling solutions in development and the closest advancement to being production ready.
+
+
+State channels are very similar to the concept of payment channels in Bitcoin’s Lightning Network, but instead of only supporting payments, they also support general ‘state updates.’ For example, votes conducted on the District Registry could be updated in a state channel and only broadcasted to the Ethereum network once all votes have been collected. This magnifies the number of computation developers can move off-chain.
+
+
+
+https://thenextweb.com/hardfork/2019/01/18/explainer-blockchain-sharding-beginners/
+
+
+https://blockonomi.com/sharding/
+
+Segwit
+
+https://medium.com/raiden-network/raiden-protocol-explained-489b429fcd90
+
+
+
+
+
