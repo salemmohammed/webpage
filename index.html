@@ -2,117 +2,237 @@
 <html>
 <title>Alqahtani</title>
 <meta charset="UTF-8">
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#3f51b5">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+
+ </head>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 90%
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  padding: 8px;
+}
 </style>
-<body class="w3-light-grey">
 
-<!-- Page Container -->
-<div class="w3-content w3-margin-top" style="max-width:1200px;">
+<body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-main" >
 
-  <!-- The Grid -->
-  <div class="w3-row-padding">
-  
-    <!-- Left Column -->
-    <div class="w3-third">
-    
-      <div class="w3-white w3-text-grey w3-card-4">
-        <div class="w3-display-container">
-          <img src="/webpage/profile.jpg" style="width:100%" alt="Salem">
-          <div class="w3-display-bottomleft w3-container w3-text-black">
-          </div>
-          <h3 style="color:black"> Salem Alqahtani</h3>
-        </div>
-        <div class="w3-container">
-          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Graduate Student</p>
-          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Buffalo, NY, USA</p>
-          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>salemmoh At buffalo.edu</p>
-        <li><a href="https://github.com/salemmohammed">Github</a></li>
-        <li><a href="https://salemmohammed.github.io/webpage/Curriculum_Vitae.pdf">C.V.</a></li>
-        <li><a href="https://twitter.com/alqahtani_js">Twitter</a></li>
-        <li><a href="https://scholar.google.com/citations?user=zMgTEK4AAAAJ&hl=en&authuser=2">Google Scholar</a></li>
-        <li><a href="/webpage/MyBlog/Blog.html">Blog</a></li>
-        <!--<li><a href="https://medium.com/@alqahtanisalem">Medium</a></li>-->
-        <li><a href="https://salemmohammed.github.io/webpage/presentation/pre.html">Talks & Slides</a></li>
-       <!-- <li><a href="https://www.youtube.com/channel/UCReesrXK90nhnyxyyT4tMTA?view_as=subscriber">YouTube</a></li>-->
-        <li><a href="https://www.researchgate.net/profile/Salem_Alqahtani2">ResearchGate</a>
-        </li>
-        <li><a href="https://salemmohammed.github.io/webpage/s.html">calendar</a>
-        </li>
-      </ul> 
-          <hr>
-          <br>
-          <br>
-        </div>
-      </div><br>
-
-    <!-- End Left Column -->
-    </div>
-
-    <!-- Right Column -->
-    <div class="w3-twothird">
-
-      <div class="w3-container w3-card w3-white w3-margin-bottom">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fab fa-wikipedia-w fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>About me</h2>
-        <div class="w3-container">
-          <p >
-            I'm a doctoral candidat at SUNY - Buffalo, computer science department. My research interests lie in the fields of Distributed Systems, Cloud Computing and Blockchain Systems. Before joining SUNY - Buffalo, I have earned a bachelor's degree in computer science after graduating from King Khalid University, Abha, Saudi Arabia and a master's degree in computer science after attending the University of Connecticut, Storrs, CT, United States.
-      </p><br>
-        </div>
-      </div>
-
-      <div class="w3-container w3-card w3-white w3-margin-bottom">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work Experience</h2>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Graduate Student / SUNY at Buffalo</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jan 2017 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
-          <p> Working in Distributed Systems lab .</p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Teaching Assistant / KKU </b></h5>
-          <br>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Intern / ARAMCO</b></h5>
-          <hr>
-        </div>
-      </div>
-
-      <div class="w3-container w3-card w3-white">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education</h2>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>State University Of New York at Buffalo</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Present</h6>
-          <p>PhD in Computer Science</p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>University of Connecticut - Storrs</b></h5>
-          <p>Master of Science in Computer Science</p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>King Khalid University - Abha, Main Campus</b></h5>
-          <p>Bachelor of Science in Computer Science</p><br>
-        </div>
-      </div>
-
-    <!-- End Right Column -->
-    </div>
-    
-  <!-- End Grid -->
-  </div>
-  
-  <!-- End Page Container -->
+<div class="header">
+  <div class="progress-container">
+    <div class="progress-bar" id="myBar"></div>
+  </div>  
 </div>
 
-<footer class="w3-container w3-teal w3-center w3-margin-top">
-</footer>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" style="background-color:blue;color:white;" href="#">Salem Alqahtani</a>
+    </div>
+    <ul class="nav navbar-nav" style="background-color:blue;color:white;">
+      <li class="active"><a style="background-color:blue;color:white;" href="https://salemmohammed.github.io/webpage/">Home</a></li>
+      <li><a style="background-color:blue;color:white;" href="https://salemmohammed.github.io/webpage/Curriculum_Vitae.pdf">C.V.</a></li>
+      <li><a style="background-color:blue;color:white;" href="https://salemmohammed.github.io/webpage/MyBlog/Blog.html">Blog</a></li>
+      <li><a style="background-color:blue;color:white;" href="https://salemmohammed.github.io/webpage/s.html">Calendar</a></li>
+      <li><a style="background-color:blue;color:white;" href="https://github.com/salemmohammed">Github</a></li>
+      <li><a style="background-color:blue;color:white;" href="https://salemmohammed.github.io/webpage/presentation/pre.html">Talks & Slides</a></li>
+      <li><a style="background-color:blue;color:white;" href="https://www.researchgate.net/profile/Salem_Alqahtani2">Research Gate</a></li>
+      <li><a style="background-color:blue;color:white;" href="https://www.researchgate.net/profile/Salem_Alqahtani2">Projects</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+<span class="js-widget-page d-none"></span>
+  <section id="about" class="home-section wg-about">
+    <div class="container">
+  <div class="row">
+  <div class="col-12 col-lg-4">
+    <div id="profile">
+
+      <img class="avatar avatar-circle" src="profile.jpg" style="width:300px;height:300px;" alt="Avatar">
+      
+
+      <div class="portrait-title">
+        <h2>Salem Alqahtani</h2>
+        <h3>Ph.D. Student</h3>
+
+          <a href="https://engineering.buffalo.edu/computer-science-engineering.html" target="_blank" rel="noopener">
+          <span>Department of Computer Science and Engineering</span>
+          </a>
+        </h3>
+        
+        <h3>
+          <a href="http://www.buffalo.edu/" target="_blank" rel="noopener">
+          <span>SUNY at Buffalo</span>
+          </a>
+        </h3>
+        
+      </div>
+
+      <ul class="network-icon" aria-hidden="true">
+        
+        <li>
+          <a href="/#contact" >
+            <i class="fas fa-envelope big-icon"></i>
+          </a>
+        </li>
+        
+        <li>
+          <a href="https://scholar.google.com/citations?user=zMgTEK4AAAAJ&hl=en&authuser=2" target="_blank" rel="noopener">
+            <i class="ai ai-google-scholar big-icon"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a href="https://github.com/salemmohammed" target="_blank" rel="noopener">
+            <i class="fab fa-github big-icon"></i>
+          </a>
+        </li>
+        
+      </ul>
+
+    </div>
+  </div>
+  <div class="col-12 col-lg-8">
+
+    <h1>Biography</h1>
+
+    <p style="font-size:23px;">
+    I'm a doctoral candidat at SUNY - Buffalo, computer science department. My research interests lie in the fields of Distributed Systems, Cloud Computing and Blockchain Systems. Before joining SUNY - Buffalo, I have earned a bachelor's degree in computer science after graduating from King Khalid University, Abha, Saudi Arabia and a master's degree in computer science after attending the University of Connecticut, Storrs, CT, United States.
+  </p>
+
+    <div class="row">
+
+      
+      <div class="col-md-5">
+        <h3>Interests</h3>
+        <ul class="ul-interests" style="font-size:18px;">
+          
+          <li> Distributed Systems </li>
+          <br>
+          <li> Blockchain </li><br>
+
+          <li> Machine Learning Systems </li>
+          
+        </ul>
+      </div>
+      <div class="col-md-7">
+        <h3>Education</h3>
+        <ul class="ul-edu fa-ul">
+          
+          <li>
+            <i class="fa-li fas fa-graduation-cap"></i>
+            <div class="description" style="font-size:18px;">
+              <p class="course" style="font-size:18px;" >M.S. in Computer Science, 2015</p>
+              <p class="institution" style="font-size:18px;">University of Connecticut</p>
+            </div>
+          </li>
+
+          <li>
+            <i class="fa-li fas fa-graduation-cap"></i>
+            <div class="description">
+              <p class="course" style="font-size:18px;" >B.S. in Computer Science, 2010</p>
+              <p class="institution" style="font-size:18px;" >King Khalid University</p>
+            </div>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </section>
+
+<script>
+// When the user scrolls the page, execute myFunction 
+window.onscroll = function() {myFunction()};
+
+function myFunction() {
+  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  var scrolled = (winScroll / height) * 100;
+  document.getElementById("myBar").style.width = scrolled + "%";
+}
+</script>
 
 </body>
 </html>
