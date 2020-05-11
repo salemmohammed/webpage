@@ -1,0 +1,29 @@
+p,h1,h3,ol {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-right: 300px;
+  margin-left: 300px;
+}
+
+p {
+text-align: justify;
+}
+
+p,h1,h3,ol {
+  font-family: "Times New Roman", Times, serif;
+}
+
+p , li{
+	font-size: 20px;
+}
+
+p.small {
+  line-height: 1.2;
+}
+
+p.big {
+  line-height: 1.8;
+}
+cite { 
+  font-style: normal;
+}

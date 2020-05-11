@@ -1,0 +1,116 @@
+<html>
+<head>
+	<title>Arbitrum</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+<h2>
+	<br> 
+	<center> Paper Review - <a href= "https://www.usenix.org/system/files/conference/usenixsecurity18/sec18-kalodner.pdf"> Arbitrum: Scalable, private smart contracts  </a></center>
+</h2>
+<body>
+
+<p class="small">
+
+	Smart contracts behave as a virtual machine (VM) which operates according to code, can hold money, and can send and receive messages. Arbitrum is a system for scalable off-chain execution of private smart contracts. Arbitrum goals to address shortcoming of Ethereum which are the scalability and privacy limitations. 
+
+</p>
+
+<p class="small">
+
+	It assumes any consensus protocol layer, and only presents the smart contract layer. Arbitrum contracts are very cheap for verifiers to manage. If parties behave according to incentives, Arbitrum verifiers need only verify a few digital signatures for each contract.
+</p>
+
+<p class="small">
+
+	The creator of a VM designates a set of managers for the VM. The Arbitrum protocol provides an any-trust guarantee: any one honest manager can force the VM to behave according to the VM’s code. The parties that are interested in the VM’s outcome can themselves serve as managers or appoint someone they trust to manage the VM on their behalf.  Verifiers track only the hash of the VMs state, rather than the full state.
+</p>
+
+<p class="small">
+
+	If, contrary to incentives, two managers disagree about what the VM will do, the verifiers employ a bisection protocol to narrow the disagreement down to the execution of a single instruction, and then one manager submits a simple proof of that one instruction execution which the verifiers can check very efficiently. The manager who was wrong pays a substantial financial penalty to the verifiers, which serves to deter disagreements.
+</p>
+
+<p class="small">
+
+	Arbitrum dramatically reduces the cost of smart contracts. If participants behave according to their incentives, then verifiers will never have to emulate or verify the behavior of any VM. The only responsibility of verifiers in this case is to do simple bookkeeping to track the currency holdings, the hash of a message inbox, and a single hashed state value for each VM. If a participant behaves irrationally, it may require the verifiers to do a modest amount of extra work, but the verifiers will be (over)compensated for this work at the expense of the irrational party.
+</p>
+
+<p class="small">
+
+	There are four types of roles in the Arbitrum protocol and system.
+	<ol>
+	<li>
+	The Verifier is the consensus protocol that used under the Arbitrum smart contract. </li>
+	<li>
+		A key is a participant in the protocol that can own currency and propose transactions.
+	</li>
+
+	<li> A VM (Virtual Machine) is a virtual participant in the protocol. Every VM has code and data that define its behavior, according to the Arbitrum Virtual Machine (AVM) Specification </li>
+	<li>
+		A manager of a VM is a party that monitors the progress of a particular VM and ensures the VMs correct behavior and keeps track of VM computations and data.
+		The Arbitrum system provides a guarantee that called any trust whcih ensures that if at least one manager of VM is honest, the VM will execute correctly according to its code. 
+	</li>
+	</ol>
+
+</p>
+
+
+<p class="small">
+
+	The managers have incentives to agree unanimously about what a VM will do. If they all agree the system will accept the assertion. If the managers disagreed, they managers have to assert any assertion they want with a deposit funds. In this case, the managers assert challenge to the assertion that disagreed on. After they solved the challenge, the wrong manager will lose the deposit. 
+</p>
+
+<p class="small">
+
+	One step proof is worked to ensure every step of execution giving start state until machine reaches end state correctly.
+
+</p>
+
+	An Arbitrum VM is created using a special transaction. Once a VM is created, managers can take action to cause that VMs state to change. An assertion states that if certain preconditions hold, the VM’s state will change in a certain way. An assertion states that if certain preconditions hold, the VM’s state will change in a certain way. An assertion about a VM is said to be eligible if (1) the assertion’s preconditions hold, (2) the VM is not in a halted state, and (3) the assertion does not spend more funds than the VM owns. The assertion contains the hash of the VM’s new state and a set of actions taken by the VM, such as sending messages or currency. Unanimous assertions are signed by all managers of that VM. If a unanimous assertion is eligible, it is immediately accepted by the Verifier as the new state of the VM. Disputable assertions are signed by only a single manager, and that manager attaches a currency deposit to the assertion. If another manager challenges the pending assertion, the challenger puts down a currency deposit, and the two managers engage in the bisection protocol, which determines which of them is lying. The liar will lose its deposit.
+
+</p>
+
+<p class="small">
+
+	The bisection protocol begins when a manager has made a disputable assertion and another manager has challenged that assertion. Both managers will have put down a currency deposit. At each step of the bisection protocol, the asserter bisects the assertion into two assertions, each involving half as many steps of computation by the VM, and the challenger chooses which half it would like to challenge. They continue this bisection protocol until an assertion about a single step (i.e., the execution of one instruction by the VM) is challenged, at which point the asserter must provide a one-step proof that the Verifier can check. The asserter wins if they provide a correct proof; otherwise the challenger wins. The winner gets their deposit back and also takes half of the loser’s deposit. The other half of the loser’s deposit goes to the Verifier.
+</p>
+
+<p class="small">
+
+	Verifier is the mechanism that verifies transactions and publishes verified transactions. In addition to storing a few parameters about each VM such as a list of its managers, the Verifier tracks three pieces of information about each VM that change over time: the hash of the VMs state, the amount of currency held by the VM, and the hash of the VMs inbox which holds messages sent to the VM. 
+	The state of a VM is advanced, corresponding to execution of the VMs program, by the Verifiers acceptance of assertions made by the VMs managers.
+
+</p>
+
+<p class="small">
+
+	There are three benefits of Arbitrum protocols.: scalability, privacy and flexibility.
+
+</p>
+
+
+
+
+
+<p class="small">
+	
+	 The protocol governs the public process that manages and advances the public state of the overall system and each VM. The VM architecture governs the syntax and semantics of Arbitrum programs that run within a VM.
+
+</p>
+
+<p class="small">
+
+	The Arbitrum protocol recognizes two kinds of actors: keys and VMs. A key is identified by (the cryptographic hash of) a public key, and the actor is deemed to have taken an action if that action is signed by the corresponding private key. The other kind of actor is a VM, which takes actions by executing code. Any actor can own currency. Arbitrum tracks how much currency is owned by each actor.
+</p>
+
+<p class="small">
+	For each VM, the Verifier tracks the hashed state of that VM, along with the amount of currency held by the VM, and a hash of its inbox. A VMs state can be changed via assertions about the VM’s execution, which specify (1) the number of instructions executed by the VM, (2) the hash of the VM’s state after the execution, and (3) any actions taken by the VM such as making payments. 
+</p>
+
+
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<title>Blog</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h2,h3,h4,h5,ol,li {font-family: "Arial", sans-serif}
+.container {
+  display: flex;
+  justify-content: center;
+}
+.center {
+  width: 800px;
+}
+img {
+   height: auto;
+   width:40%;
+}
+</style>
+
+<body stylstclass="w3-light-grey">
+<!-- w3-content defines a container for fixed size centered content, 
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1400px;">
+
+
+
+<!-- Header -->
+<header class="w3-container w3-center w3-padding-32"> 
+  <h3><b>Paper Review - <a href= "https://eprint.iacr.org/2017/913.pdf"> Thunderella: Blockchains with Optimistic Instant Confirmation </a> </b></h3>
+</header>
+
+<!-- Grid -->
+<div class="w3-row">
+
+<!-- Blog entries -->
+<div class="container" class="w3-col l8 s12">
+  <!-- Blog entry -->
+  <div class="w3-card-4 w3-margin w3-white" >
+    <div class="w3-container">      
+    </div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+	In a state machine replication (SMR) or consensus protocols, a set of nodes seek to agree on a linearly-ordered log based on two properties: consistency where all servers must have the same view of the log, and livness where a client request evenually added to the log. Thunderella is a practical solution for SMR, that combined a fast, asynchronous path with a slow synchronous path. Thunderella can work in permission and permissionless settings. 
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+	
+	Generally, consensus protocol can be responsiveness if the transactions confirmed by the honest node in a time that depends only on the actual network delay plus a majority condition which is 2/3 of the players are honest. In Thunderella, optimistic responsiveness is limiting responsiveness to a good condition under two cases. First, when we have a worst case condition W with majority are honest, where protocol guarantee the worest case of consistency and slow comfmation. Second, optimistic case O with majority 3/4 are honest, and responsive confirmation with an honest leader.
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	So, Thunderella satisfies liveness and consistency under conditions W, and satisfies optimistic responsivness under condtion O.
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+	
+	So, Thunderella satisfies liveness and consistency under conditions W, and satisfies optimistic responsivness under condtion O.
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+	
+	In a nutshell the protocol has a designated leader. The leader receives the transactions and sends out the signed transaction to a committee of players. If a trnsaction has received more than 3/4 of the committees signatures, the protocol refers to such a transaction as being notarized.
+
+</p></div>
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+  In permissioned Thunderella setting, the committee memebers are all the players W' = W where W' for committee members and W for all players. This will envolve high communication overhead. To improve the protocol under this setting, sub-sampling committee memebers from all players frequently to ensure corruption does not controll the sampling.  
+  <br>
+  In permissioned and permission-less Thunderella setting, the committee will be the recent miners for the recent blocks. 
+
+</p></div>
+<!-- END GRID -->
+</div><br>
+
+<!-- END w3-content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
+  <center><a href="http://www.salemmoh.com/MyBlog/Blog.html" class="w3-button w3-padding-large w3-white w3-border" class="w3-button w3-black w3-padding-large w3-margin-bottom">Main Blog</a></button></center>
+</footer>
+
+</body>
+</html>
