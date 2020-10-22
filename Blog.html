@@ -47,7 +47,7 @@
 		      <h2>A Summary of Ziplog’s White Paper</h2>
 		      <h5>Title description, Oct 20, 2020</h5>
 		      <div class="fakeimg" style="height:200px;">Image</div>
-		      <p>A log is a general abstract data structure. It is an ordered list where data changes captured as events and stored in the log. Data changes stored in a sequence of records R with a specific size. A record is appended to the end of the log, and reads proceed left-to-right. Each record is assigned a unique sequential log number. The purpose of the log is to record what happened and when.</p>
+		      <p>Ziplog is a total ordered shared log that achieves low latency and high throughput. It has strong consistency due its total order property that has achieved by using InsertAfter() API. Ziplog has Low latency (two or three messages) and has high throughput by using sharding techniques. Sharding divides the log across number of sites each site has more than one machines called Shard.</p>
 		    </div>
 		    <div class="card">
 		      <h2>My Understanding of WPaxos</h2>
