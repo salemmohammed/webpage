@@ -21,6 +21,19 @@ a:focus { outline: 0; }
 	-webkit-border-radius: 20px;
 	-moz-border-radius: 20px;
 }
+#mydiv {
+	position:absolute;
+	left:800px;
+	top:350px;
+	width:203px;
+	height:83px;
+}
+#mydiv a {
+ display block;
+ width:83;
+ height:83px;
+}
+
 
 #main-content { padding: 14px; }
 
