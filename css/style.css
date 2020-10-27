@@ -33,7 +33,7 @@ a:focus { outline: 0; }
 #main-content { padding: 14px; }
 
 h1 { font: bold 30px Helvetica, Arial, Sans-Serif; letter-spacing: -1px; padding: 14px; color: #333; text-shadow: 1px 1px 1px white; }
-p { margin: 0 0 15px 0; }
+p { margin: 0 0 15px 0; word-wrap: break-word; width: 100%;}
  
 nav ul { 
     list-style: none; background: #154c85; padding: 5px 20px; width: 100%; position: relative; 
