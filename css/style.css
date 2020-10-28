@@ -6,7 +6,7 @@
 
 * { margin: 0; padding: 0; }
 html { overflow-y: scroll; }
-body { font: 15px/1.7 Helvetica, sans-serif; background: #333; color: #333; padding: 0; margin: 1%; }
+body { font: 100%/1.7 Helvetica, sans-serif; background: #333; color: #333; padding: 0; margin: 1%; }
 .group:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
 .group { display: inline-block; clear: both; }
 /* start commented backslash hack \*/ * html .group { height: 1%; } .group { display: block; } /* close commented backslash hack */
@@ -56,7 +56,7 @@ nav ul li a {
 	-moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
 	text-shadow: rgba(0,0,0,.4) 0 1px 0;
 	-webkit-text-stroke: 1px transparent;
-	font: bold 18px/20px "Lucida Grande", "Verdana", sans-serif;
+	font: bold 80%/170% "Lucida Grande", "Verdana", sans-serif;
 	color: rgba(255,255,255,.85);
 	text-decoration: none; 
 	margin: 0 3% 0 0;
