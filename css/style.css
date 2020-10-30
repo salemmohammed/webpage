@@ -1,15 +1,32 @@
-/*
-	 CSS-Tricks Example
-	 by Chris Coyier
-	 http://css-tricks.com
-*/
 
-* { margin: 0; padding: 0; }
-html { overflow-y: scroll; }
-body { font: 100%/1.7 Helvetica, sans-serif; background: #333; color: #333; padding: 0; margin: 1%; }
-.group:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
-.group { display: inline-block; clear: both; }
-/* start commented backslash hack \*/ * html .group { height: 1%; } .group { display: block; } /* close commented backslash hack */
+* { 
+	margin: auto; 
+	padding: auto; 
+}
+
+html { 
+	overflow-y: scroll; 
+}
+
+body { 
+	font: 100%/1.7 Helvetica, sans-serif; 
+	background: #333; color: #333;
+	min-height: 100px;
+	margin-top: 1%; 
+}
+.group:after { 
+	visibility: hidden; 
+	display: block; 
+	font-size: 0; 
+	content: " "; 
+	clear: both; height: 0; 
+}
+.group { 
+	display: inline-block; 
+	clear: both; 
+}
+
+* html .group { height: 1%; } .group { display: block; } /* close commented backslash hack */
 article, aside, figure, footer, header, hgroup, menu, nav, section { display: block; }
 a:focus { outline: 0; }
 
@@ -22,11 +39,10 @@ a:focus { outline: 0; }
 	-moz-border-radius: 1%;
 }
 #mydiv {
-	position: relative;
-	left:50%;
-	top: 300px;
-	width:20%;
-	height: 8%;
+	position: absolute;
+	left:30%;
+	top: 50%;
+	transform: translate(-54%-50%);
 }
 
 
@@ -34,11 +50,25 @@ a:focus { outline: 0; }
 	padding: 2%; 
 }
 
-h1 { font: bold 30% Helvetica, Arial, Sans-Serif; letter-spacing: -1px; padding: 1%; color: #333; text-shadow: 1px 1px 1px white; }
-p { margin: 0 0 1% 0; word-wrap: break-word; width: 100%;}
+h1 { 
+	font: bold 20% Helvetica, Arial, Sans-Serif; 
+	letter-spacing: -1px; 
+	padding: 1%; 
+	color: #333; 
+	text-shadow: 1% 1% 1% white;
+}
+p { 
+	
+	word-wrap: break-word; 
+	width: 100%;
+}
  
 nav ul { 
-    list-style: none; background: #154c85; padding: 1% 2%; width: 100%; position: relative; 
+    list-style: none; 
+    background: #154c85; 
+    padding: 1% 2%; 
+    width: 100%; 
+    position: relative; 
     left: 0%;
 }
 nav ul li { display: inline;}
