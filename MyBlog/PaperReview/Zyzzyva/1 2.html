@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+<title>Blog</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h2,h3,h4,h5,ol,li {font-family: "Arial", sans-serif}
+.container {
+  display: flex;
+  justify-content: center;
+}
+.center {
+  width: 800px;
+}
+img {
+   height: auto;
+   width:40%;
+}
+</style>
+
+<body stylstclass="w3-light-grey">
+<!-- w3-content defines a container for fixed size centered content, 
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1400px;">
+
+
+
+<!-- Header -->
+<header class="w3-container w3-center w3-padding-32"> 
+  <h1><b>Zyzzyva</b></h1>
+</header>
+
+<!-- Grid -->
+<div class="w3-row">
+
+<!-- Blog entries -->
+<div class="container" class="w3-col l8 s12">
+  <!-- Blog entry -->
+  <div class="w3-card-4 w3-margin w3-white" >
+    <div class="w3-container">
+      <center> <h3><b>Paper Review - <a href= "http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.122.112&rep=rep1&type=pdf"> Zyzzyva: Speculative Byzantine Fault Tolerance </a> </b></h3></center>
+      
+    </div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	PBFT has been deployed in several systems. Zyzzyva introduced an optimistic linear path into PBFT, which was utilized in several systems. The optimistic path has linear complexity, while the leader replacement protocol remains O(n<sup>3</sup>).
+
+</p></div>
+
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	Zyzzyva is a leader-based consensus protocol with speculative execution which means uncommitted execution. The committed execution has moved to the client-side which is the main contribution in Zyzzyva. The PBFT is an expensive protocol and in Zyzzyva paper there is no need to have PBFT on board to reach an agreement on a single value. Note, the state machine in a simple term is the program variables and commands. The challenge in Zyzzyva is to make sure that the client's response becomes stable. The client expects the request's stabilization but not being committed, unlike many traditional BFT protocols. 
+
+	<figure><center>
+	<img src="SMR.png" height="228" width="304">
+    <figcaption>State Machine Replica</figcaption>
+    </center>
+	</figure>
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	Zyzzyva has two scenarios for each round. First is called ideal execution where client starts its timer and sends its request to primary and receives replies from 3f+1 replicas before the client's timer is fired where f is the faulty node and 3f+1 is the total nodes in the system. The primary receives the client request and assigns a sequence number (n) to the request (r) and then forward it to all replicas. replicas (r) executes the request and appends it to its history. Finally, each replica sends a reply to the client. The client must receive enough history information with the replies from all replicas for eventually commit. Then, the client will accept the response and pass it to the application. If the client receives from 2f+1 to 3f+1, then the Zyzzyva move to the second stage of the protocol. It will form a commited-certificate that has to be sign by 2f+1 before the client accepting the responses for its request from 2f+1 replicas. If the speculative reply and history are stable, then the client uses the reply. Otherwise. the client waits until the systems converge on both stable reply and history. In the ideal execution of the protocol, replicas cannot determine that the request is committed and there will not be acknowledgment for replicas. Below you will see the client message to primary, primary to replicas, and replicas to the client.<br> 	
+
+	<img class=scaled src="req.png">
+	
+	<figcaption> Client's Request </figcaption>	
+	
+	<br>
+	
+	<img src="spec_or.png">
+	<figcaption> Replica's Response </figcaption>
+	
+	<br>
+
+	<img class=scaled src="order_req.png">
+	<figcaption> Primary Forwards Request</figcaption>
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	<span style="color:red;">You might already wondering about what is the advantage that Zyzzyva found of moving the commit phase to the client!</span> Quote "Moving commit to client offers significant practical advantages comparing to many states of art protocol including PBFT. It will reduce cryptographic overheads and increases peak throughput by a factor of two to an order of magnitude with minimum latency." Zyzzyva is able to keep up costs while increasing throughput and decreasing latency from previous BFT protocols. See the table below. 
+
+</p></div>
+
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	 <center>
+	 	<img src="Table1.png">
+		<center><figcaption> Performance Comparison</center></figcaption>
+	</center>
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	You might already saw the similarity between PBFT and Zyzzyva in replication cost. In throughput, Zyzzyva and PBFT use batching when the load is high. The Zyzzyva critical path messages are lower bound and even better than PBFT. I will talk more about the perforamnce at the end of this article.
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	Zyzzyva consists of three sub-protocols; Agreement where protocol orders the requests for execution by the replicas. View change where protocol coordinates the election of a new primary when the current primary is faulty or the system is running slowly. The checkpoint where protocol limits the state that must be stored by replicas and reduces the cost of performing view changes. 
+	<center>
+	 	<img class=scaled src="protocol1.png" width="1000" height="300">
+		<center><figcaption> Zyzzyva Protocol -1- </center></figcaption>
+	</center>
+
+	<center>
+	 	<img class=scaled src="protocol2.png" width="1000" height="300">
+		<center><figcaption> Zyzzyva Protocol -2- </center></figcaption>
+	</center>
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	Zyzzyva ensures the safety as follow; If a request with sequence number n and history h<sub>n</sub> completes, then any request that completes with a higher sequence number n' ≥ n has a history h<sub>n'</sub> that includes h<sub>n</sub> as a prefix.
+	Zyzzyva ensures the liveness as follow; Any request issued by a correct client eventually completes.
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	Zyzzyva proceeds in a sequence of views with a dedicated leader for every view to maintain liveness of the protocol. If a sufficient number of replicas suspect that the current primary is faulty, then a view change occurs and a new primary elected. Every replica maintains the ordered history of the requests it has executed and a copy of the max commit certificate, the commit certificate was seen by (i) that covers the largest prefix of (i)s stored history. The highest sequence number of commit certificates is the committed history in the replica while follow history is speculative. Maintained state by each replica Ordered history Max Commit Certificate Checkpoint.
+	<center>
+	 	<img class=scaled src="state.png" width="800" height="300">
+		<center><figcaption> State maintained at each replica</center></figcaption>
+	</center>
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	In agreement protocol, faulty execution, the client has to receive 2f+1 acknowledgments of commit certificate. A replica may only accept and speculatively executes requests in sequence number order but message loss or a faulty primary can introduce holes in the sequence number space. Replica (i) discards the order request message if sequence number (n) that less than or equals to the largest sequence number that accepted by replica (max<sub>n</sub>) or n > (max<sub>n</sub> + 1). Then, replica (i) sets a timer and sends a message to the primary to fill-hole. The primary ignores the request from another view. If no replies from primary to replica (i) and the timer is fired, replica (i) will broadcast fill-hole message for all replicas and initiate view change request when the timer fires. Any replica j received the request from (i) will send the corresponding request back to (i) if j received one. If the (i) received a conflict message form j's, it will be proof of misbehavior.   
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	From the client-side, once the client received the responses, there are four possible cases. First, the client receives 3f+1 matching responses and completes the request. Second, the client received form 3f+1 to 3f matching responses, assembles a committed certificate, and transmits the commit certificate to the replicas. Then, replica receives the commit message form a client containing a committed certificate and acknowledges with a local-commit message. If the local history is consistent with the commit certificate then replica updates his maximum commit certificate if the certificate has a higher number. If local history has a hole, then 
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	The client receives local commit messages from 2f+1 replicas and complete the request. If the client timer is fired for commit messages before 2f+1, then client resends its request to all replicas, which forward the request to the primary in order to ensure the request is assigned a sequence number and eventually executed.
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	View change sub-protocol is to elect a new primary, detect the faulty primary, Ensure no change in history. The correct replicas stop accepting a new message once it commits to view change. Correct replica commits to view change because it saw that primary is faulty or saw f+1 view change messages. In Zyzzyva, a correct replica does not abandon view v unless it is guaranteed that every other correct replica will do the same, forcing a new view and a new primary. Replica i broadcast "I hate the primary". I (i) receives from f+1 votes of replacing primary then it commits to a view change. Replica i will forward f+1 votes to all replica. Stop accepting new messages, send View change message, Send New View message. The case of the missing phase is to strengthen the condition under which a replica commits to a view change. Add a new phase to the view change protocol. The case of the uncommitted Request, Weaken the condition under which a request appears in the history included in the new-view message.
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	There are serveral optimizations to imorve perforamnce of Zyzzyva. 
+	<br>
+	1- Replacing signatures with MACS. This will reduce the computational overhead of cryptographic operations. <br>
+
+	2- Separating agreement from execution. 2f+1 replicas will be exection replicas and the remaining replicas are witness.<br> 
+	
+	3- Request Batching. <br>
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	As the number of clients increases, the Zyzzyva throughput scales better than PBFT with and without batching. Without batching, Zyzzyva achieves a peak throughput that is 2.7 times higher than PBFT due to PBFT’s higher cryptographic overhead (PBFT performs about 2.2 times more crypto operations than Zyzzyva) and message overhead (PBFT sends and receives about 3.7 times more messages than Zyzzyva). When the batch size is increased to 10, Zyzzyva’s peaks throughput increase to 86K ops/sec suggesting that the protocol overhead at the primary is 12µs per batched request. First, Zyzzyva requires fewer cryptographic Overall, the peak throughput achieved by Zyzzyva is within 35% of that of an unreplicated server that simply replies to client requests over an authenticated channel. Note that as application-level request processing increases, the protocol overhead will fall.
+	<center>
+	 	<img class=scaled src="throughput.png" width="500" height="400">
+	</center>
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	Latency in Zyzzyva uses fast agreement to drive its latency near the optimal for an agreement protocol—3 one-way message delays. The experimental results in Figure 4 show that Zyzzyva and Zyzzyva5 achieve significantly lower latency than the other agreement-based protocols, PBFT and HQ.
+	<center>
+	 	<img class=scaled src="latency.png" width="500" height="400">
+	</center>
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+
+	Fault Scalability, Figure 6 shows the peak throughputs of Zyzzyva, PBFT, HQ, and Q/U(reported throughput) with increasing number of tolerated faults for batch sizes of 1 and 10. Zyzzyva is robust to increasing f and continues to provide significantly higher throughput than other systems for the same reasons as explained in the throughput section. Additionally, as expected for the case with no batching, the overhead of Zyzzyva increases more slowly than PBFT with increasing f because Zyzzyva requires 2 + (3f + 1) cryptographic operations compared to 2 + (10f + 1) cryptographic operations for PBFT.
+	
+	<center>
+	 	<img class=scaled src="fault.png" width="500" height="400">
+	</center>
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+	We believe that for these metrics, the most interesting regions are when f is small and when batching is enabled. Not coincidentally, Zyzzyva performs well in these situations, dominating all of the approaches with respect to load at the bottleneck server. Also, when f is small, Zyzzyva and Zyzzyva5 also have low message counts at the primary. As f increases, when batching is used, Zyzzyva and Zyzzyva5 are likely to remain attractive. One point worth noting is that message counts at the primary for Zyzzyva, Zyzzyva5, and PBFT increase as f increases, while server message counts are constant with f for Q/U and HQ.
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+	Figure 8 compares throughput with increasing numbers of clients for Zyzzyva, Zyzzyva5, PBFT, and HQ in the presence of f backup server failures. For the case when f = 1, with one failure and no batching (b = 1), Zyzzyva and Zyzzyva5 provide 1.8 and 2.6 times higher throughput than PBFT, respectively, because of additional cryptographic and message overheads as described above. Note, I left talking about Zyzzyva5 for another blog.	
+	<br>
+
+	<center>
+	 	<img class=scaled src="8.png" width="500" height="400">
+	</center>
+	<br><br>
+
+</p></div>
+
+<div class="w3-container"><p style="color:black;font-size:20px;">
+	Figure 9 compares throughput when Zyzzyva uses commit optimiation. See section 4.1 in the paper.
+	<center>
+	 	<img class=scaled src="9.png" width="500" height="400">
+	</center>
+
+<br><br>
+
+</p></div>
+
+
+</p></div>
+
+  </div>
+  <hr>
+
+
+<!-- END BLOG ENTRIES -->
+</div>
+
+
+
+<!-- END GRID -->
+</div><br>
+
+<!-- END w3-content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
+  <center><a href="http://www.salemmoh.com/MyBlog/Blog.html" class="w3-button w3-padding-large w3-white w3-border" class="w3-button w3-black w3-padding-large w3-margin-bottom">Main Blog</a></button></center>
+</footer>
+
+</body>
+</html>
