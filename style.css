@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    margin-top: 50px;
+}
+
+header {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    line-height: 50px;
+    background-color: #eee;
+}
+
+header * {
+    display: inline;
+    height: 50px;
+
+}
+
+header ul {
+    padding: 0;
+}
+
+header li {
+    margin-left: 20px;
+}
+
+section {
+    height: 100vh;
+    border: 1px solid black;
+    display: flex;
+    justify-content: left;
+    align-items: top;
+    text-align: left;
+}
+div.a {
+  font-size: 20px;
+}
+div.b {
+  font-size: 20px;
+}
+div.img {
+  margin-top: 40px;
+  margin-left: 10px;
+}
+#google{
+    https://icons8.com/icon/drPiDBy9kkJ3/google-scholar
+}
+
+p {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 50px;
+  margin-left: 50px;
+}
+
+#hero .profile-img {
+    width: 300px;
+}
+
+footer {
+    text-align: center;
+    padding: 50px;
+}
+
+h1,h2{
+  font-family: "Roboto";
+  color: blue;
+  margin-left: 50px;
+}
+ul {
+    margin-left: 50px;
+}
